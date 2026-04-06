@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Data Web Foundation">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)" />
+  <circle cx="256" cy="210" r="92" fill="#ffffff" opacity="0.18" />
+  <path d="M140 320h232v26H140z" fill="#ffffff" opacity="0.9" />
+  <path d="M172 278h168v20H172z" fill="#ffffff" opacity="0.9" />
+  <text x="256" y="235" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="120" font-weight="700" fill="#ffffff">DW</text>
+</svg>

@@ -1,0 +1,20 @@
+{
+  "name": "Data Web Foundation - Acad?mico Mobile",
+  "short_name": "Acad?mico",
+  "description": "Experi?ncia mobile acad?mica com 4 telas integrada ao backend FastAPI.",
+  "lang": "pt-BR",
+  "start_url": "/mobile",
+  "scope": "/mobile",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e8eaf0",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/mobile/static/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

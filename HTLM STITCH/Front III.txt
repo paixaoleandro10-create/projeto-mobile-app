@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Pro - Final Report Card</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#4338ca",
+              "inverse-primary": "#a5b4fc",
+              "on-secondary-container": "#585a68",
+              "on-error-container": "#991b1b",
+              "on-error": "#ffffff",
+              "background": "#e8eaf0",
+              "surface-container-lowest": "#f0f2f8",
+              "on-surface-variant": "#585a68",
+              "on-background": "#2e3040",
+              "tertiary-container": "#a78bfa",
+              "on-tertiary-fixed-variant": "#5b21b6",
+              "inverse-surface": "#2e3040",
+              "surface-bright": "#edeef4",
+              "primary-fixed-dim": "#a5b4fc",
+              "surface-container-highest": "#d6d8de",
+              "secondary-container": "#d8dae6",
+              "tertiary-fixed": "#ede9fe",
+              "surface-container": "#e2e4ea",
+              "on-primary-container": "#e0e2ff",
+              "tertiary-fixed-dim": "#c4b5fd",
+              "outline-variant": "#d0d2dc",
+              "surface-tint": "#6366f1",
+              "secondary-fixed-dim": "#b8baca",
+              "on-primary": "#ffffff",
+              "error-container": "#fee2e2",
+              "primary": "#6366f1",
+              "inverse-on-surface": "#e8eaf0",
+              "surface": "#e8eaf0",
+              "secondary": "#6c6e7e",
+              "on-tertiary-container": "#3b1f63",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#e5e7ed",
+              "surface-container-high": "#dcdee4",
+              "surface-dim": "#d4d6dc",
+              "on-secondary-fixed": "#1a1b26",
+              "error": "#dc2626",
+              "primary-fixed": "#e0e2ff",
+              "tertiary": "#7c3aed",
+              "primary-container": "#818cf8",
+              "on-tertiary-fixed": "#2e1065",
+              "on-secondary-fixed-variant": "#404252",
+              "on-primary-fixed": "#1e1b4b",
+              "outline": "#8a8c9a",
+              "on-surface": "#2e3040",
+              "secondary-fixed": "#d8dae6",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#dcdee4"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .neomorph-raised {
+        box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+      }
+      .neomorph-inset {
+        box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#e8eaf0] flex items-center justify-between px-6 py-4 shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full neomorph-raised p-0.5 overflow-hidden">
+<img alt="student_profile_photo" class="w-full h-full object-cover rounded-full" data-alt="Close up portrait of a smiling teenage university student with glasses in a modern campus setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVUhG491JlZjreqls50wPvHOGwvutP-vl6R1f8PpF3vaFeDutpMB2C4BSnM6FPLrAoxnHdRhnbX3NIgm8LvZYU5uQfd1WCFSbF8I6SimPmvE-VTq5kkKPmpW9Awh0-idaf-5w87l21ccDEh37EBoyDvG7VpfOv0JoLI2k_X1ifNiFTXX8vxcJsxy_R4Iz392dk4QZsxLj58Cg5I2QAVPwqWd1sAKyCNDjZlkGR2XO2Qds9xUQM_U7T8pF6d7J-TSBeJjh-b9Qy8Q"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold text-slate-800 text-xl font-bold text-indigo-600">Academic Pro</h1>
+</div>
+<button class="neomorph-raised p-2 rounded-xl text-slate-500 hover:opacity-80 transition-opacity active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)]">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="max-w-5xl mx-auto px-6 pt-8 pb-32">
+<!-- Student Identity Header -->
+<div class="neomorph-raised rounded-xl p-6 mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<p class="text-sm font-medium text-on-surface-variant mb-1">Boletim Escolar</p>
+<h2 class="text-2xl font-semibold text-on-background">Gabriel Silva</h2>
+<div class="flex items-center gap-4 mt-2 text-sm text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="school">school</span> 3º Ano Ensino Médio</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="numbers">numbers</span> RA: 402839-2</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="neomorph-inset px-4 py-2 rounded-lg flex flex-col items-center">
+<span class="text-[10px] uppercase tracking-wider text-secondary">Geral</span>
+<span class="text-lg font-bold text-primary">8.4</span>
+</div>
+<div class="neomorph-raised bg-emerald-50 px-4 py-2 rounded-lg flex flex-col items-center border border-emerald-100/20">
+<span class="text-[10px] uppercase tracking-wider text-emerald-600">Status</span>
+<span class="text-sm font-semibold text-emerald-600">Aprovado</span>
+</div>
+</div>
+</div>
+<!-- Grade Report Table -->
+<div class="neomorph-raised rounded-xl overflow-hidden bg-background">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-on-surface-variant text-xs uppercase tracking-widest font-semibold border-b border-surface-container-high">
+<th class="px-6 py-5">Disciplinas</th>
+<th class="px-4 py-5 text-center">1º Bim</th>
+<th class="px-4 py-5 text-center">2º Bim</th>
+<th class="px-4 py-5 text-center">3º Bim</th>
+<th class="px-4 py-5 text-center">4º Bim</th>
+<th class="px-4 py-5 text-center">Média</th>
+<th class="px-6 py-5 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="text-sm font-medium text-on-surface">
+<!-- Math -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">Matemática</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">7.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.0</div></td>
+<td class="px-4 py-4 text-center font-bold text-primary">8.1</td>
+<td class="px-6 py-4 text-right"><span class="text-emerald-600">Aprovado</span></td>
+</tr>
+<!-- Physics -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">Física</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">6.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">7.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">6.0</div></td>
+<td class="px-4 py-4 text-center font-bold text-primary">7.0</td>
+<td class="px-6 py-4 text-right"><span class="text-emerald-600">Aprovado</span></td>
+</tr>
+<!-- Biology -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">Biologia</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">10.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">—</div></td>
+<td class="px-4 py-4 text-center font-bold text-tertiary">9.5</td>
+<td class="px-6 py-4 text-right"><span class="text-indigo-600">Em Curso</span></td>
+</tr>
+<!-- Literature -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">Literatura</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.5</div></td>
+<td class="px-4 py-4 text-center font-bold text-primary">8.5</td>
+<td class="px-6 py-4 text-right"><span class="text-emerald-600">Aprovado</span></td>
+</tr>
+<!-- Chemistry -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">Química</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">5.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">6.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">7.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">4.5</div></td>
+<td class="px-4 py-4 text-center font-bold text-error">5.7</td>
+<td class="px-6 py-4 text-right"><span class="text-error">Exame</span></td>
+</tr>
+<!-- History -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">História</td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.0</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">8.5</div></td>
+<td class="px-4 py-4 text-center"><div class="neomorph-inset inline-block px-3 py-1 rounded-md text-on-surface">9.5</div></td>
+<td class="px-4 py-4 text-center font-bold text-primary">9.0</td>
+<td class="px-6 py-4 text-right"><span class="text-emerald-600">Aprovado</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-10 flex flex-col items-center gap-4">
+<button class="neomorph-raised flex items-center gap-2 px-10 py-4 rounded-xl text-primary font-semibold transition-all active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] active:scale-95 group">
+<span class="material-symbols-outlined group-hover:animate-bounce" data-icon="picture_as_pdf">picture_as_pdf</span>
+                Export PDF
+            </button>
+<p class="text-xs text-secondary italic">Última atualização: 14 de Outubro de 2023</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#e8eaf0] rounded-t-[24px] z-50 shadow-[0_-8px_16px_rgba(0,0,0,0.05),0_-4px_8px_rgba(255,255,255,0.4)]">
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Subjects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-indigo-600 shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-2xl px-4 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Report</span>
+</a>
+</nav>
+</body></html>

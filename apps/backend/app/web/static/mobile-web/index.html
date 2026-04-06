@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Experi?ncia Celular | Data Web Foundation</title>
+    <link rel="manifest" href="/mobile/static/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/mobile/static/icons/icon.svg" />
+    <link rel="stylesheet" href="/mobile/static/styles.css" />
+  </head>
+  <body class="mobile-root">
+    <a class="skip-link" href="#main-content">Pular para o conte?do principal</a>
+
+    <header class="top-bar" role="banner">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true">DW</div>
+        <div>
+          <p class="brand-eyebrow">Modo local sem Node</p>
+          <h1 class="brand-title">Acad?mico Mobile</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="chip chip-link" href="/web">Abrir vis?o Web</a>
+        <button id="install-app-button" class="chip chip-install hidden" type="button" hidden>
+          Instalar app
+        </button>
+        <span id="data-source-badge" class="chip chip-api" aria-live="polite">Fonte: API real</span>
+      </div>
+    </header>
+
+    <main id="main-content" class="content" tabindex="-1">
+      <section class="container">
+        <p id="data-source-detail" class="source-detail">
+          UI alternativa de teste conectada aos endpoints /api/v1/mobile/*
+        </p>
+      </section>
+      <section id="data-warning" class="container hidden" role="alert" aria-live="assertive"></section>
+      <section class="container">
+        <h2 id="screen-title" class="screen-title">Painel</h2>
+        <p id="screen-subtitle" class="subtitle">Carregando dados da API...</p>
+      </section>
+      <section id="screen-content" class="container" aria-live="polite"></section>
+      <section class="container">
+        <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navega??o principal mobile">
+      <a class="nav-link nav-link-active" data-screen="dashboard" href="/mobile" aria-controls="screen-content" aria-current="page">
+        Painel
+      </a>
+      <a class="nav-link" data-screen="subjects" href="/mobile/subjects" aria-controls="screen-content">Mat?rias</a>
+      <a class="nav-link" data-screen="schedule" href="/mobile/schedule" aria-controls="screen-content">Agenda</a>
+      <a class="nav-link" data-screen="report" href="/mobile/report" aria-controls="screen-content">Boletim</a>
+    </nav>
+
+    <noscript>
+      <p class="noscript">
+        Este modo alternativo precisa de JavaScript habilitado para consumir os endpoints da API.
+      </p>
+    </noscript>
+
+    <script src="/mobile/static/app.js" defer></script>
+  </body>
+</html>

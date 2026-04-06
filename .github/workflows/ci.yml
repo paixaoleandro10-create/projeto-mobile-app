@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop, "feature/**", "fix/**", "chore/**"]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  backend:
+    name: Backend Lint + Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint backend (ruff)
+        run: ruff check app tests
+
+      - name: Run backend tests (pytest)
+        run: pytest
+
+  frontend:
+    name: Frontend Lint + E2E
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python for API during e2e
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Install backend dependencies for e2e API
+        run: pip install -r ../backend/requirements.txt
+
+      - name: Lint frontend
+        run: npm run lint
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Start backend API for e2e
+        env:
+          DATABASE_URL: "sqlite:///./e2e.db"
+          AUTO_CREATE_TABLES: "true"
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 --app-dir ../backend &
+          for i in {1..20}; do
+            if curl -sSf http://127.0.0.1:8000/api/v1/health >/dev/null; then
+              echo "Backend is up";
+              exit 0;
+            fi
+            sleep 1
+          done
+          echo "Backend failed to start"
+          exit 1
+
+      - name: Run frontend e2e tests
+        env:
+          CI: "true"
+          PLAYWRIGHT_BASE_URL: "http://127.0.0.1:3000"
+          API_BASE_URL: "http://127.0.0.1:8000/api/v1"
+        run: npm run test:e2e

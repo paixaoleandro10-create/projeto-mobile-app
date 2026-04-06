@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#4338ca",
+              "inverse-primary": "#a5b4fc",
+              "on-secondary-container": "#585a68",
+              "on-error-container": "#991b1b",
+              "on-error": "#ffffff",
+              "background": "#e8eaf0",
+              "surface-container-lowest": "#f0f2f8",
+              "on-surface-variant": "#585a68",
+              "on-background": "#2e3040",
+              "tertiary-container": "#a78bfa",
+              "on-tertiary-fixed-variant": "#5b21b6",
+              "inverse-surface": "#2e3040",
+              "surface-bright": "#edeef4",
+              "primary-fixed-dim": "#a5b4fc",
+              "surface-container-highest": "#d6d8de",
+              "secondary-container": "#d8dae6",
+              "tertiary-fixed": "#ede9fe",
+              "surface-container": "#e2e4ea",
+              "on-primary-container": "#e0e2ff",
+              "tertiary-fixed-dim": "#c4b5fd",
+              "outline-variant": "#d0d2dc",
+              "surface-tint": "#6366f1",
+              "secondary-fixed-dim": "#b8baca",
+              "on-primary": "#ffffff",
+              "error-container": "#fee2e2",
+              "primary": "#6366f1",
+              "inverse-on-surface": "#e8eaf0",
+              "surface": "#e8eaf0",
+              "secondary": "#6c6e7e",
+              "on-tertiary-container": "#3b1f63",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#e5e7ed",
+              "surface-container-high": "#dcdee4",
+              "surface-dim": "#d4d6dc",
+              "on-secondary-fixed": "#1a1b26",
+              "error": "#dc2626",
+              "primary-fixed": "#e0e2ff",
+              "tertiary": "#7c3aed",
+              "primary-container": "#818cf8",
+              "on-tertiary-fixed": "#2e1065",
+              "on-secondary-fixed-variant": "#404252",
+              "on-primary-fixed": "#1e1b4b",
+              "outline": "#8a8c9a",
+              "on-surface": "#2e3040",
+              "secondary-fixed": "#d8dae6",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#dcdee4"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #e8eaf0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2e3040;
+        }
+        .neomorph-raised {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+        }
+        .neomorph-inset {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+        .neomorph-active {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#e8eaf0] flex items-center justify-between px-6 py-4 w-full shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full neomorph-raised overflow-hidden flex items-center justify-center bg-surface">
+<img class="w-full h-full object-cover" data-alt="portrait of a focused university student with a friendly expression in a brightly lit academic environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEllqg5Pd-tRH8M8ptOhK8f0-9yZK1SX14Zq9G8RUc7aKjkbw87W3p0hq87La2Ar-N7w3frO19As0TppVfDDeBZgG0WZ-nON2yObCJOkigFp-TzcmmP459lSc6QcwW2k0bNQ3pGuoUhYo8jxiPU5KQLGCHnkMs5yUJshggXiIfn299TdJtz_AKczWjPYRVxztBloMhzMJ0StWl2tiUPx0Zvqy8IWdSVJiJGk5tpGTA2Z0gHfyW2t2ZCwH6-_Ua50Y91NMvoHxMsQ"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-slate-800 text-xl font-bold text-indigo-600">Academic Pro</span>
+</div>
+<button class="neomorph-raised p-2 rounded-xl text-slate-500 hover:opacity-80 transition-opacity active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="max-w-4xl mx-auto px-6 pt-8 pb-12">
+<!-- Page Title & Selector -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h1 class="text-2xl font-semibold text-on-surface">Schedule</h1>
+<p class="text-on-surface-variant text-sm">October 2024</p>
+</div>
+<div class="flex gap-4">
+<button class="neomorph-raised w-10 h-10 rounded-xl flex items-center justify-center text-primary active:neomorph-inset">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="neomorph-raised w-10 h-10 rounded-xl flex items-center justify-center text-primary active:neomorph-inset">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Tactile Calendar Grid -->
+<section class="neomorph-raised rounded-3xl p-6 mb-10 bg-surface">
+<div class="grid grid-cols-7 gap-4 mb-4 text-center">
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Mon</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Tue</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Wed</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Thu</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Fri</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Sat</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant opacity-60">Sun</span>
+</div>
+<div class="grid grid-cols-7 gap-4 text-center">
+<!-- Row 1 -->
+<button class="neomorph-inset h-12 rounded-xl flex items-center justify-center text-on-surface-variant/40 italic">30</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">1</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">2</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">3</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">4</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">5</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">6</button>
+<!-- Row 2 -->
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">7</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">8</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">9</button>
+<button class="neomorph-active h-12 rounded-xl flex flex-col items-center justify-center text-primary font-bold">
+                    10
+                    <span class="w-1 h-1 bg-primary rounded-full mt-1"></span>
+</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">11</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">12</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">13</button>
+<!-- Row 3 -->
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface relative">
+                    14
+                    <span class="absolute top-1 right-1 w-1.5 h-1.5 bg-error rounded-full"></span>
+</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">15</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">16</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">17</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">18</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">19</button>
+<button class="neomorph-raised h-12 rounded-xl flex items-center justify-center text-on-surface">20</button>
+</div>
+</section>
+<!-- Events List -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-semibold text-on-surface">Events for Today</h2>
+<button class="text-primary text-sm font-medium hover:opacity-70 transition-opacity">Add New</button>
+</div>
+<!-- Event Card 1 -->
+<div class="neomorph-raised rounded-2xl p-5 flex items-center gap-5 bg-surface group hover:neomorph-inset transition-all">
+<div class="neomorph-inset w-14 h-14 rounded-2xl flex flex-col items-center justify-center shrink-0">
+<span class="text-xs text-on-surface-variant font-bold">09:00</span>
+<span class="text-[10px] text-on-surface-variant opacity-60">AM</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-semibold text-on-surface">Chemistry Mid-term Test</h3>
+<span class="material-symbols-outlined text-error text-lg" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded-md neomorph-inset text-[10px] font-bold text-on-surface-variant uppercase">Room 402</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">timer</span> 90 mins
+                        </span>
+</div>
+</div>
+<button class="text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Event Card 2 -->
+<div class="neomorph-raised rounded-2xl p-5 flex items-center gap-5 bg-surface group hover:neomorph-inset transition-all">
+<div class="neomorph-inset w-14 h-14 rounded-2xl flex flex-col items-center justify-center shrink-0">
+<span class="text-xs text-on-surface-variant font-bold">11:30</span>
+<span class="text-[10px] text-on-surface-variant opacity-60">AM</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-semibold text-on-surface">Literature Essay Due</h3>
+<span class="material-symbols-outlined text-tertiary text-lg">flag</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded-md neomorph-inset text-[10px] font-bold text-on-surface-variant uppercase">Online Portal</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">description</span> 2,500 words
+                        </span>
+</div>
+</div>
+<button class="text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Event Card 3 -->
+<div class="neomorph-raised rounded-2xl p-5 flex items-center gap-5 bg-surface group hover:neomorph-inset transition-all opacity-70">
+<div class="neomorph-inset w-14 h-14 rounded-2xl flex flex-col items-center justify-center shrink-0">
+<span class="text-xs text-on-surface-variant font-bold">02:00</span>
+<span class="text-[10px] text-on-surface-variant opacity-60">PM</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-semibold text-on-surface">Math Study Group</h3>
+<span class="material-symbols-outlined text-on-surface-variant/40 text-lg">group</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded-md neomorph-inset text-[10px] font-bold text-on-surface-variant uppercase">Library B</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-1 line-through">
+                            Optional
+                        </span>
+</div>
+</div>
+<button class="text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#e8eaf0] rounded-t-[24px] z-50 shadow-[0_-8px_16px_rgba(0,0,0,0.05),0_-4px_8px_rgba(255,255,255,0.4)]">
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors Active: scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors Active: scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Subjects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-indigo-600 shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-2xl px-4 py-2 Active: scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors Active: scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Report</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-28 w-14 h-14 rounded-2xl bg-primary text-white neomorph-raised flex items-center justify-center active:neomorph-inset transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</body></html>

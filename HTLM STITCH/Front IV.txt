@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Pro - Subjects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed-variant": "#4338ca",
+                        "inverse-primary": "#a5b4fc",
+                        "on-secondary-container": "#585a68",
+                        "on-error-container": "#991b1b",
+                        "on-error": "#ffffff",
+                        "background": "#e8eaf0",
+                        "surface-container-lowest": "#f0f2f8",
+                        "on-surface-variant": "#585a68",
+                        "on-background": "#2e3040",
+                        "tertiary-container": "#a78bfa",
+                        "on-tertiary-fixed-variant": "#5b21b6",
+                        "inverse-surface": "#2e3040",
+                        "surface-bright": "#edeef4",
+                        "primary-fixed-dim": "#a5b4fc",
+                        "surface-container-highest": "#d6d8de",
+                        "secondary-container": "#d8dae6",
+                        "tertiary-fixed": "#ede9fe",
+                        "surface-container": "#e2e4ea",
+                        "on-primary-container": "#e0e2ff",
+                        "tertiary-fixed-dim": "#c4b5fd",
+                        "outline-variant": "#d0d2dc",
+                        "surface-tint": "#6366f1",
+                        "secondary-fixed-dim": "#b8baca",
+                        "on-primary": "#ffffff",
+                        "error-container": "#fee2e2",
+                        "primary": "#6366f1",
+                        "inverse-on-surface": "#e8eaf0",
+                        "surface": "#e8eaf0",
+                        "secondary": "#6c6e7e",
+                        "on-tertiary-container": "#3b1f63",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#e5e7ed",
+                        "surface-container-high": "#dcdee4",
+                        "surface-dim": "#d4d6dc",
+                        "on-secondary-fixed": "#1a1b26",
+                        "error": "#dc2626",
+                        "primary-fixed": "#e0e2ff",
+                        "tertiary": "#7c3aed",
+                        "primary-container": "#818cf8",
+                        "on-tertiary-fixed": "#2e1065",
+                        "on-secondary-fixed-variant": "#404252",
+                        "on-primary-fixed": "#1e1b4b",
+                        "outline": "#8a8c9a",
+                        "on-surface": "#2e3040",
+                        "secondary-fixed": "#d8dae6",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dcdee4"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neo-raised {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+        }
+        .neo-inset {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+        .neo-pressed:active {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+            transform: scale(0.98);
+        }
+        body {
+            background-color: #e8eaf0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#e8eaf0] flex items-center justify-between px-6 py-4 w-full shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full neo-raised overflow-hidden border-2 border-surface">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="portrait of a young college student with a friendly smile, warm natural lighting in a campus library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCYw79Yi2BG9Zr4_R2LZq47It2xy-uWtmn-enWiTR1xT83O1f0ntgfTO44eZCAo3acwzUBiUg9qN7U4fXFMBGfVAxAwIvVwUShUnZJgL5Q82XQyyeaqLxdb7THfIMygP_k_3pyw7KSFaQaX_eutJOKfyOa6D25jK5wUGxbtcEkI1e4ygQgiezbOcOpZ2HWVei9QEL02KDevivNC9wdruFarJnrzwYDMd-q2bHXk7YD5CH-FlVB4D9ZilIZXolYdPDzeCkKMFj57A"/>
+</div>
+<h1 class="text-xl font-bold text-indigo-600 font-['Plus_Jakarta_Sans']">Academic Pro</h1>
+</div>
+<button class="neo-raised p-2 rounded-xl text-slate-500 hover:opacity-80 transition-opacity active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="px-6 py-8 max-w-4xl mx-auto">
+<!-- Search & Filter Area -->
+<div class="mb-8 flex flex-col md:flex-row gap-4">
+<div class="flex-1 neo-inset rounded-2xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-on-surface-variant w-full" placeholder="Search subjects..." type="text"/>
+</div>
+<button class="neo-raised px-6 py-3 rounded-2xl flex items-center justify-center gap-2 text-primary font-semibold neo-pressed">
+<span class="material-symbols-outlined">filter_list</span>
+<span>Semester 1</span>
+</button>
+</div>
+<!-- Subjects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Subject Card: Math -->
+<div class="neo-raised rounded-[24px] p-6 flex flex-col gap-6 neo-pressed cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 neo-inset rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">functions</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Mathematics</h3>
+<p class="text-sm text-on-surface-variant">Prof. Alan Turing</p>
+</div>
+</div>
+<div class="neo-raised px-3 py-1 rounded-full text-xs font-bold text-primary">
+                        A+
+                    </div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-on-surface-variant">Average Grade</span>
+<span class="text-2xl font-bold text-on-surface">94%</span>
+</div>
+<div class="h-4 w-full neo-inset rounded-full overflow-hidden p-1">
+<div class="h-full bg-primary rounded-full" style="width: 94%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-semibold text-on-surface-variant tracking-wider uppercase">
+<span>Passing: 60%</span>
+<span>Current: 94%</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-white/20">
+<div class="flex -space-x-2">
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot with blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxgpQiklTgDfZ0uCz-0pqpcGgX0XoeOZIqH6dfXKDgMiFDolViPiouhTBDnJtJOy7lL4xkL3Qv1FOt2Rm9Mm3NR-B96tvxGb2Zab1Db8kg0MrNKTB8GREndy51WDoRCPjvtTKqXMQcdgqeOE5QQOOdqDJcnPknuSJ7iCm6J-tPst3DcbTuPEbb-5vtnxoF-HH4TCLkYrKYjqD6OcK6jtAXxU-_rmahlYmqP4SynPH4bXBbp47-RMEZnpL61BjL9uARCNyzxEXNQ"/>
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot with grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGPvvfJJBl00FBoVuCAsB8n2HG0-aC6tAu_fkoxxb5XBj570FNtHsRQ8BYcVrUpajRWVh9L_qEvB3UTQLkrqSn537FImM8x_RBisze-A_YMP17HcsXkRzjcPi3zSZTFCHp_Tojz3CF2ao02-hQPTY_bFJwLHkDYr58MvJC-yeOKKvn5q7xyPwo1fo2WzdsgeSZuWi5yU3Me1mjQk4XsSUbRqJ3ihagYocE7KcxOsqpc_XOJDuCQGkfRK6kVaqtcvauuu19pe-KzQ"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface neo-raised bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+12</div>
+</div>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subject Card: Physics -->
+<div class="neo-raised rounded-[24px] p-6 flex flex-col gap-6 neo-pressed cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 neo-inset rounded-2xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-3xl">architecture</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Physics</h3>
+<p class="text-sm text-on-surface-variant">Dr. Marie Curie</p>
+</div>
+</div>
+<div class="neo-raised px-3 py-1 rounded-full text-xs font-bold text-tertiary">
+                        B
+                    </div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-on-surface-variant">Average Grade</span>
+<span class="text-2xl font-bold text-on-surface">82%</span>
+</div>
+<div class="h-4 w-full neo-inset rounded-full overflow-hidden p-1">
+<div class="h-full bg-tertiary rounded-full" style="width: 82%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-semibold text-on-surface-variant tracking-wider uppercase">
+<span>Passing: 60%</span>
+<span>Current: 82%</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-white/20">
+<div class="flex -space-x-2">
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-kFMD49lYahszNxqjHUS_yBxrya6r5s1Eh6jtSUwgvurueRcEui5V8Ig2_zChB6snF50avwdfgVABeHzNFABhjy2gvQwn2RdCdUNtf4eoSzfE4OOx0bIXh5WUj8sVxa0lSdxRdWG-epkNKNWkqtL_Sa9kQUpKxbAL1QN5y33IX9pYbDziBq9uxcr3Aw2qQG0-doBVW2dEOX14y144qU03sxw7VHo1JUsA_6V0blHHRSLfCLL53GxdZAsmz6atQ5W31lcRk1QRtA"/>
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_NIOl0slVU7HKKW3IQEEjCQFd6qAumFwbEBQJIVyiWUZCUQFokqlX03b7w0sRHppoQHNJuORDcUU305K6y4-f0OXQU_L5aNz4A-ZjTfh1DG9quCZd0hXB78ASSji9O0idtCoIL5e4QypGMPDNRWDIZxQEkJ_V4HyBVBNURJ48x9ZapmDUVUwaNTNHlvMMvEHfSB2YHsSc5GN1f712FbSns06Ck_SdY8NP1J1ch2azAxVQwQ247qygTRNoX2Lu-GQYyfJFChsnag"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface neo-raised bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+8</div>
+</div>
+<button class="text-tertiary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subject Card: History -->
+<div class="neo-raised rounded-[24px] p-6 flex flex-col gap-6 neo-pressed cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 neo-inset rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">history_edu</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">History</h3>
+<p class="text-sm text-on-surface-variant">Prof. Howard Zinn</p>
+</div>
+</div>
+<div class="neo-raised px-3 py-1 rounded-full text-xs font-bold text-primary">
+                        A
+                    </div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-on-surface-variant">Average Grade</span>
+<span class="text-2xl font-bold text-on-surface">89%</span>
+</div>
+<div class="h-4 w-full neo-inset rounded-full overflow-hidden p-1">
+<div class="h-full bg-primary rounded-full" style="width: 89%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-semibold text-on-surface-variant tracking-wider uppercase">
+<span>Passing: 60%</span>
+<span>Current: 89%</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-white/20">
+<div class="flex -space-x-2">
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot with colorful background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPn0GsI9QqIPdhw-QPTVdGBIncfOO_hTQYgCgIIaQZxMNVN6ikwZMCuYQp_SggXi7NTJBUfaoMSVbw65HZEPQt_JQTjVG7xazzfl-DvjdlN4XbPGC_I2aHptePLzmf5jCzCKeskSLfTtOTZ_qhIT1gpHLB2OF8A_rAsdxmjVTbHdxrj8V1cBqmWoNJwlgtSnZ-GJ8n2nseGmTVdDGQpi_Gg7UEIuTcDf7EtvO8HNl7mYWwaRQtUKUlOZNTZfO_xt_wBnCVo-1omQ"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface neo-raised bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+24</div>
+</div>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subject Card: Literature -->
+<div class="neo-raised rounded-[24px] p-6 flex flex-col gap-6 neo-pressed cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 neo-inset rounded-2xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-on-surface">Literature</h3>
+<p class="text-sm text-on-surface-variant">Dr. Maya Angelou</p>
+</div>
+</div>
+<div class="neo-raised px-3 py-1 rounded-full text-xs font-bold text-tertiary">
+                        B-
+                    </div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-on-surface-variant">Average Grade</span>
+<span class="text-2xl font-bold text-on-surface">76%</span>
+</div>
+<div class="h-4 w-full neo-inset rounded-full overflow-hidden p-1">
+<div class="h-full bg-tertiary rounded-full" style="width: 76%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-semibold text-on-surface-variant tracking-wider uppercase">
+<span>Passing: 60%</span>
+<span>Current: 76%</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-white/20">
+<div class="flex -space-x-2">
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot looking away" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGRd1Wwn46GsLgvis0xJEuOSMui-obTYzsxmJUq1GlactU9eQCEMISFmRtBOgzPtL4IgZZi8SRYuZ2OcXLTtiKDLJP9IyirSrVBH1ZZ6UAPxd2tElmRFLmtBhfEI5XOXXZByFTq-6sW9GNv7oV0FfrLo640LZ8ACG7VxZGEAl_IvihjCH9oNwrIcSNDBvOtMCWGsDKRHW6UY8mKW5d0Plgjnsye5yF9glXdqqdsFFJDJ1fA0LsHcbny0KSbymB8UtUn_UuhrQNKQ"/>
+<img alt="Student" class="w-8 h-8 rounded-full border-2 border-surface neo-raised" data-alt="student profile headshot smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdiKwg-sFIEKtKC0x61AgRIaWGKivL92-RxCvsxZZXuCO3V1l-dwv1XW-1lWvieSNnqFBO12GTEarMU4hOMItRVugVfYBPjrLhVxgtSg6Z5DbUmhI51CYyIzI0Rf0TaLH9RK07MfSmcY2Csbn5v2gt7rdQGJk0djr7sDnm6FzonTRajboWtTSmThKYlEO1ACgZY-NEsR3xpaRYxYutS3s7XxXubAZlkC8e1ftagU125uNAPjVGz_lT9R6OcAPbOLkpwPokYPQRHQ"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface neo-raised bg-surface-container flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+5</div>
+</div>
+<button class="text-tertiary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#e8eaf0] rounded-t-[24px] z-50 shadow-[0_-8px_16px_rgba(0,0,0,0.05),0_-4px_8px_rgba(255,255,255,0.4)]">
+<a class="flex flex-col items-center justify-center text-slate-500 font-['Plus_Jakarta_Sans'] text-[10px] font-medium px-4 py-2 hover:text-indigo-500 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-indigo-600 font-['Plus_Jakarta_Sans'] text-[10px] font-medium shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-2xl px-4 py-2 hover:text-indigo-500 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Subjects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 font-['Plus_Jakarta_Sans'] text-[10px] font-medium px-4 py-2 hover:text-indigo-500 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 font-['Plus_Jakarta_Sans'] text-[10px] font-medium px-4 py-2 hover:text-indigo-500 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Report</span>
+</a>
+</nav>
+</body></html>
