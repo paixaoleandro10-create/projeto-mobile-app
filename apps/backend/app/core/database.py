@@ -10,6 +10,8 @@ def _create_engine():
 
     if settings.database_url.startswith("sqlite"):
         connect_args = {"check_same_thread": False}
+    elif settings.database_url.startswith("postgresql+psycopg://"):
+        connect_args = {"connect_timeout": settings.database_connect_timeout_seconds}
 
     return create_engine(
         settings.database_url,

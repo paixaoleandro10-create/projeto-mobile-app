@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -14,6 +15,11 @@ from app.web.routes import router as web_router
 settings = get_settings()
 mobile_web_static_dir = Path(__file__).resolve().parent / "web" / "static" / "mobile-web"
 web_static_dir = Path(__file__).resolve().parent / "web" / "static" / "web"
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+)
+logger = logging.getLogger("app.startup")
 app = FastAPI(
     title=settings.app_name,
     version="0.1.0",
@@ -50,13 +56,25 @@ app.mount(
 
 @app.on_event("startup")
 def startup() -> None:
-    if settings.auto_create_tables:
+    logger.info(
+        "startup_begin env=%s auto_create_tables=%s",
+        settings.app_env,
+        settings.auto_create_tables,
+    )
+    if not settings.auto_create_tables:
+        logger.info("startup_skip_db_init")
+        return
+
+    try:
         Base.metadata.create_all(bind=engine)
         db = SessionLocal()
         try:
             seed_mobile_data(db)
         finally:
             db.close()
+        logger.info("startup_db_init_ok")
+    except Exception as exc:  # pragma: no cover
+        logger.exception("startup_db_init_failed detail=%s", exc)
 
 
 @app.get("/", tags=["system"], summary="Informações do serviço")

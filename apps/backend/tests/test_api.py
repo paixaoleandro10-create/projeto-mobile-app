@@ -14,6 +14,14 @@ def test_healthcheck(client):
     assert payload["database"] == "ok"
 
 
+def test_readiness(client):
+    response = client.get("/api/v1/health/ready")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["status"] == "ready"
+    assert payload["database"] == "ok"
+
+
 def test_create_record_and_summary(client):
     create_payload = {
         "event_time": datetime.now(UTC).isoformat(),

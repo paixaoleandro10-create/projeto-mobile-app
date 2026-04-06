@@ -39,6 +39,7 @@ Stack implementada:
 
 ### Backend
 - `GET /api/v1/health`
+- `GET /api/v1/health/ready`
 - `GET /api/v1/analytics/records`
 - `POST /api/v1/analytics/records`
 - `GET /api/v1/analytics/summary?period=day|month|year`
@@ -148,7 +149,8 @@ Frontend principal:
 - Em caso de falha real, a UI exibe alerta visivel com causa (rede/timeout/contrato invalido).
 
 ### Backend/API
-- `GET /api/v1/health` deve retornar `status=ok`.
+- `GET /api/v1/health` deve retornar `status=ok` (ou `degraded` se banco indisponivel).
+- `GET /api/v1/health/ready` deve retornar `status=ready` quando o banco estiver pronto.
 - Validar os endpoints `/api/v1/mobile/*`.
 - Validar fonte persistida:
   - `GET /api/v1/mobile/dashboard`
@@ -213,7 +215,7 @@ npm run test:e2e
 Exemplo (Render):
 1. Diretoria raiz do servico: `apps/backend`
 2. Build command: `pip install -r requirements.txt`
-3. Start command: `uvicorn app.main:app --host 0.0.0.0 --port 8000`
+3. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 4. Variaveis: `DATABASE_URL` e secrets relacionados.
 
 ## Controle de versao

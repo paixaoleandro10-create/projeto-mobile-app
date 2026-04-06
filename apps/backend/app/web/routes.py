@@ -14,7 +14,7 @@ _web_index = _static_dir / "web" / "index.html"
 @router.get("/web")
 @router.get("/web/")
 def web_index() -> FileResponse:
-    return FileResponse(_web_index)
+    return FileResponse(_web_index, headers={"Cache-Control": "no-store"})
 
 
 @router.get("/mobile")
@@ -28,7 +28,7 @@ def web_index() -> FileResponse:
 @router.get("/mobile-web")
 @router.get("/mobile-web/")
 def mobile_web_index() -> FileResponse:
-    return FileResponse(_mobile_web_index)
+    return FileResponse(_mobile_web_index, headers={"Cache-Control": "no-store"})
 
 
 @router.get("/mobile/sw.js")
