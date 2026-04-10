@@ -99,6 +99,11 @@ def test_mobile_frontend_routes(route, client):
     assert response.status_code == 200
     assert "text/html" in response.headers["content-type"]
     assert "Modo local sem Node" in response.text
+    assert '<meta charset="UTF-8"' in response.text
+    assert "Experiência" in response.text
+    assert "conteúdo" in response.text
+    assert "Matérias" in response.text
+    assert "Fundação Web de Dados" in response.text
 
 
 def test_mobile_frontend_static_assets(client):
@@ -123,6 +128,8 @@ def test_mobile_frontend_static_assets(client):
     manifest_payload = manifest_response.json()
     assert manifest_payload["start_url"] == "/mobile"
     assert manifest_payload["display"] == "standalone"
+    assert "Fundação Web de Dados" in manifest_payload["name"]
+    assert "Experiência" in manifest_payload["description"]
 
     sw_response = client.get("/mobile/sw.js")
     assert sw_response.status_code == 200
@@ -137,7 +144,11 @@ def test_web_frontend_static_page(client):
     html_response = client.get("/web")
     assert html_response.status_code == 200
     assert "text/html" in html_response.headers["content-type"]
+    assert '<meta charset="UTF-8"' in html_response.text
     assert "Resumo" in html_response.text
+    assert "conteúdo" in html_response.text
+    assert "Experiência" in html_response.text
+    assert "Fundação Web de Dados" in html_response.text
     assert "celular" in html_response.text
 
     css_response = client.get("/web/static/styles.css")

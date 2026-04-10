@@ -30,12 +30,11 @@ Stack implementada:
 ## MVP tecnico entregue
 
 ### Frontend
-- `/` pagina inicial semantica e responsiva.
-- `/analytics` listagem de dados com resumo.
-- `/mobile` no Next.js (frontend mobile principal).
+- Frontend principal em desenvolvimento local (Next.js): `/analytics` e `/mobile`.
 - `/web` no FastAPI (visao unica desktop com resumo consolidado).
 - `/mobile`, `/mobile/subjects`, `/mobile/schedule`, `/mobile/report` no FastAPI (experiencia celular em 4 telas).
 - `/mobile-web` no FastAPI (alias de compatibilidade para a experiencia celular).
+- `/` no backend FastAPI responde JSON da API (nao e link visual do app).
 
 ### Backend
 - `GET /api/v1/health`
@@ -140,8 +139,9 @@ Frontend principal:
 ## Como validar funcionamento
 
 ### Frontend
-- Com Node: abrir `/`, `/analytics` e `/mobile`.
-- Sem Node: abrir `/web` para visao desktop e `/mobile` para experiencia celular.
+- Publico (Render/Railway): usar `/web` e `/mobile` como links visuais oficiais.
+- A raiz `/` deve responder JSON da API (nao interface visual).
+- Com Node local (Next.js): `/analytics` e `/mobile` continuam disponiveis em `localhost:3000`.
 - Navegar nas 4 telas mobile por rota: `/mobile`, `/mobile/subjects`, `/mobile/schedule`, `/mobile/report`.
 - Verificar o badge no topo:
   - `Fonte: API real` quando os contratos estao validos.
@@ -315,5 +315,14 @@ A experiencia mobile foi preparada como PWA mantendo a arquitetura atual e sem a
 - Web: `/web`
 - Mobile PWA: `/mobile`, `/mobile/subjects`, `/mobile/schedule`, `/mobile/report`
 - Alias legado: `/mobile-web`
+- API Docs: `/docs`
+- Raiz da API: `/` (retorna JSON)
 - API: `/api/v1/mobile/*`
+
+### Links publicos oficiais (Render)
+
+- https://projeto-mobile-app-1.onrender.com/web
+- https://projeto-mobile-app-1.onrender.com/mobile
+- https://projeto-mobile-app-1.onrender.com/docs
+- https://projeto-mobile-app-1.onrender.com/ (resposta JSON da API)
 

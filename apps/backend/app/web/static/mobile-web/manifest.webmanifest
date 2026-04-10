@@ -1,7 +1,7 @@
 {
-  "name": "Data Web Foundation - Acad?mico Mobile",
-  "short_name": "Acad?mico",
-  "description": "Experi?ncia mobile acad?mica com 4 telas integrada ao backend FastAPI.",
+  "name": "Fundação Web de Dados - Acadêmico Mobile",
+  "short_name": "Acadêmico",
+  "description": "Experiência mobile acadêmica com 4 telas integrada ao backend FastAPI.",
   "lang": "pt-BR",
   "start_url": "/mobile",
   "scope": "/mobile",

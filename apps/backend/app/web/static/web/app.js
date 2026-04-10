@@ -29,7 +29,7 @@ const FALLBACK = {
     },
     summary: {
       overall: "-",
-      status: "In Progress"
+      status: "Em andamento"
     },
     lines: []
   }
@@ -42,6 +42,22 @@ const reportContent = document.getElementById("report-content");
 const sourceChip = document.getElementById("web-source");
 const statusMessage = document.getElementById("status-message");
 const subtitle = document.getElementById("web-subtitle");
+
+function normalizeError(rawMessage) {
+  if (rawMessage === "timeout") {
+    return "tempo limite excedido";
+  }
+  if (rawMessage === "unknown error") {
+    return "erro desconhecido";
+  }
+  if (rawMessage === "Failed to fetch" || rawMessage === "fetch failed") {
+    return "falha de conexão com a API";
+  }
+  if (String(rawMessage).startsWith("HTTP ")) {
+    return `erro ${rawMessage}`;
+  }
+  return rawMessage;
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -77,17 +93,18 @@ async function fetchEndpoint(endpoint, fallbackData) {
     const data = await response.json();
     return { source: "api", data, endpoint };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "unknown error";
+    const rawMessage = error instanceof Error ? error.message : "unknown error";
+    const message = normalizeError(rawMessage);
     return { source: "fallback", data: fallbackData, endpoint, error: message };
   }
 }
 
 function renderSummary(dashboard, subjects, schedule, report) {
   const cards = [
-    { label: "Media ponderada", value: dashboard.data.overview.weighted_gpa },
+    { label: "Média ponderada", value: dashboard.data.overview.weighted_gpa },
     { label: "Progresso", value: `${dashboard.data.overview.progress_percent}%` },
-    { label: "Posicao na turma", value: dashboard.data.overview.class_rank },
-    { label: "Media geral", value: report.data.summary.overall },
+    { label: "Posição na turma", value: dashboard.data.overview.class_rank },
+    { label: "Média geral", value: report.data.summary.overall },
     { label: "Eventos no mes", value: String(schedule.data.events.length) },
     { label: "Matérias ativas", value: String(subjects.data.subjects.length) }
   ];
@@ -149,7 +166,7 @@ function renderPerformance(result) {
         <p class="item-subtitle">${escapeHtml(item.detail)} - ${escapeHtml(item.delta)}</p>
       </li>
     `,
-    "Sem lancamentos de desempenho recente."
+    "Sem lançamentos de desempenho recente."
   );
 
   performanceContent.insertAdjacentHTML("beforeend", warning);
@@ -198,7 +215,7 @@ function renderReport(result) {
             <th class="right">T2</th>
             <th class="right">T3</th>
             <th class="right">T4</th>
-            <th class="right">Media</th>
+            <th class="right">Média</th>
             <th class="right">Situação</th>
           </tr>
         </thead>
@@ -253,7 +270,7 @@ async function bootstrap() {
 
 bootstrap().catch((error) => {
   const message = error instanceof Error ? error.message : "erro inesperado";
-  statusMessage.textContent = `Falha ao carregar pagina web: ${message}`;
+  statusMessage.textContent = `Falha ao carregar página web: ${message}`;
   sourceChip.textContent = "Fonte: erro";
   sourceChip.classList.add("source-fallback");
 });

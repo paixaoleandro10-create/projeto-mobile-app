@@ -37,7 +37,7 @@ const FALLBACK_DATA = {
         subject: "História das civilizações",
         detail: "Quiz da unidade 3 - 12 Out",
         score: "96/100",
-        delta: "+2.4% vs média",
+        delta: "+2.4% em relação à média",
         gradeLabel: "A",
         tone: "primary"
       },
@@ -46,7 +46,7 @@ const FALLBACK_DATA = {
         subject: "Ciência da computação",
         detail: "Projeto de fluxo lógico - 10 Out",
         score: "89/100",
-        delta: "-0.5% vs média",
+        delta: "-0.5% em relação à média",
         gradeLabel: "B+",
         tone: "secondary"
       }
@@ -102,7 +102,7 @@ const FALLBACK_DATA = {
         day: 10,
         time: "11:30",
         meridiem: "AM",
-        title: "Entrega da redação de literatura",
+        title: "Entrega de redação de literatura",
         place: "Portal online",
         detail: "2.500 palavras",
         priority: "normal"
@@ -122,12 +122,12 @@ const FALLBACK_DATA = {
   report: {
     student: {
       name: "Gabriel Silva",
-      class_name: "3º ano do ensino médio",
+      class_name: "Último ano",
       student_id: "402839-2"
     },
     summary: {
       overall: "8.4",
-      status: "Approved"
+      status: "Aprovado"
     },
     lines: [
       {
@@ -135,21 +135,21 @@ const FALLBACK_DATA = {
         subject: "Matemática",
         terms: ["8.5", "7.0", "9.0", "8.0"],
         average: "8.1",
-        status: "Approved"
+        status: "Aprovado"
       },
       {
         id: "r2",
         subject: "Física",
         terms: ["6.5", "8.0", "7.5", "6.0"],
         average: "7.0",
-        status: "Approved"
+        status: "Aprovado"
       },
       {
         id: "r3",
         subject: "Química",
         terms: ["5.5", "6.0", "7.0", "4.5"],
         average: "5.7",
-        status: "Exam"
+        status: "Exame"
       }
     ]
   }
@@ -247,8 +247,8 @@ function translateClassRank(rankText) {
 
 function translateDelta(deltaText) {
   return String(deltaText)
-    .replace(" pts vs avg", " pts vs média")
-    .replace(" vs avg", " vs média");
+    .replace(" pts vs avg", " pts em relação à média")
+    .replace(" vs avg", " em relação à média");
 }
 
 function translateMonthLabel(monthLabel) {
@@ -274,6 +274,9 @@ function translateMonthLabel(monthLabel) {
 }
 
 function translateReportStatus(status) {
+  if (status === "Aprovado" || status === "Em andamento" || status === "Exame") {
+    return status;
+  }
   if (status === "Approved") {
     return "Aprovado";
   }
@@ -318,6 +321,9 @@ function translateErrorDetail(errorText) {
   }
   if (errorText === "timeout") {
     return "tempo limite excedido";
+  }
+  if (String(errorText).startsWith("HTTP ")) {
+    return `erro ${errorText}`;
   }
   return String(errorText);
 }
@@ -364,8 +370,8 @@ function registerMobileServiceWorker() {
 
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/mobile/sw.js", { scope: "/mobile/" }).catch((error) => {
-      const errorText = error instanceof Error ? error.message : "falha ao registrar service worker";
-      setStatus(`PWA indispon?vel: ${errorText}`);
+      const errorText = error instanceof Error ? error.message : "falha ao registrar Service Worker";
+      setStatus(`PWA indisponível: ${errorText}`);
     });
   });
 }
@@ -392,11 +398,11 @@ function setupInstallPrompt() {
     updateInstallButtonVisibility();
 
     if (outcome === "accepted") {
-      setStatus("Instala??o iniciada. Verifique o sistema do celular.");
+      setStatus("Instalação iniciada. Verifique o sistema do celular.");
       return;
     }
 
-    setStatus("Instala??o cancelada.");
+    setStatus("Instalação cancelada.");
   });
 
   window.addEventListener("appinstalled", () => {
@@ -706,18 +712,18 @@ function renderReport(result) {
   const lines = result.data.lines;
 
   const statusClass =
-    summary.status === "Approved"
+    summary.status === "Aprovado" || summary.status === "Approved"
       ? "status-approved"
-      : summary.status === "Exam"
+      : summary.status === "Exame" || summary.status === "Exam"
         ? "status-exam"
         : "status-progress";
 
   const rowsHtml = lines
     .map((line) => {
       const lineStatusClass =
-        line.status === "Approved"
+        line.status === "Aprovado" || line.status === "Approved"
           ? "status-approved"
-          : line.status === "Exam"
+          : line.status === "Exame" || line.status === "Exam"
             ? "status-exam"
             : "status-progress";
 
