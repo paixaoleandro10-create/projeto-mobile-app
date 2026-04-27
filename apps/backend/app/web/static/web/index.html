@@ -3,63 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Visão Web Acadêmica | Fundação Web de Dados</title>
+    <title id="web-page-title">Visão Web</title>
     <link rel="stylesheet" href="/web/static/styles.css" />
   </head>
   <body class="web-shell">
-    <a class="skip-link" href="#web-main">Pular para o conteúdo principal</a>
+    <a id="web-skip-link" class="skip-link" href="#web-main">Pular para o conteúdo principal</a>
 
     <header class="web-header" role="banner">
       <div>
-        <p class="web-eyebrow">Experiência web desktop</p>
-        <h1 class="web-title">Resumo Acadêmico</h1>
+        <p id="web-eyebrow" class="web-eyebrow">Experiência Web</p>
+        <h1 id="web-title" class="web-title">Resumo Acadêmico</h1>
       </div>
       <div class="web-actions">
-        <a class="action-link" href="/mobile">Abrir experiência celular</a>
-        <a class="action-link action-link-secondary" href="/docs">Ver documentação da API</a>
+        <a id="web-mobile-action" class="action-link" href="/mobile">Abrir Experiência Mobile</a>
       </div>
     </header>
 
     <main id="web-main" class="web-main" tabindex="-1">
       <section class="hero-panel">
-        <h2>Visão geral da turma</h2>
-        <p id="web-subtitle">Carregando consolidado dos endpoints /api/v1/mobile/* ...</p>
-        <div id="web-source" class="source-chip">Fonte: API real</div>
+        <h2 id="web-hero-title">Visão geral da turma</h2>
+        <p id="web-subtitle">Carregando dados acadêmicos...</p>
+        <div id="web-source" class="source-chip">Fonte: dados atualizados do sistema</div>
       </section>
 
       <section id="summary-cards" class="summary-grid" aria-live="polite"></section>
 
       <section class="content-grid">
         <article class="panel">
-          <h3>Tarefas em destaque</h3>
+          <h3 id="web-section-tasks-title">Tarefas em destaque</h3>
           <div id="tasks-content"></div>
         </article>
 
         <article class="panel">
-          <h3>Desempenho recente</h3>
+          <h3 id="web-section-performance-title">Desempenho recente</h3>
           <div id="performance-content"></div>
         </article>
       </section>
 
       <section class="panel">
-        <h3>Boletim resumido</h3>
+        <h3 id="web-section-report-title">Boletim resumido</h3>
         <div id="report-content"></div>
       </section>
 
       <section class="panel">
-        <h3>Atalhos de teste</h3>
-        <div class="links-row">
-          <a href="/web">/web</a>
-          <a href="/mobile">/mobile</a>
-          <a href="/mobile/subjects">/mobile/subjects</a>
-          <a href="/mobile/schedule">/mobile/schedule</a>
-          <a href="/mobile/report">/mobile/report</a>
-        </div>
+        <h3 id="web-section-shortcuts-title">Navegação rápida</h3>
+        <div id="web-shortcuts-links" class="links-row"></div>
       </section>
 
       <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
     </main>
 
+    <script src="/web/static/labels.js" defer></script>
     <script src="/web/static/app.js" defer></script>
   </body>
 </html>

@@ -2,6 +2,7 @@
 
 const API_BASE = "/api/v1/mobile";
 const LOAD_TIMEOUT_MS = 6000;
+const LABELS = window.WEB_LABELS;
 
 const FALLBACK = {
   dashboard: {
@@ -42,19 +43,71 @@ const reportContent = document.getElementById("report-content");
 const sourceChip = document.getElementById("web-source");
 const statusMessage = document.getElementById("status-message");
 const subtitle = document.getElementById("web-subtitle");
+const skipLink = document.getElementById("web-skip-link");
+const mobileAction = document.getElementById("web-mobile-action");
+const shortcutsLinks = document.getElementById("web-shortcuts-links");
+const PT_BR_VISIBLE_REPLACEMENTS = [
+  ["Mid-term Test", "Prova intermediária"],
+  ["Essay Due", "Entrega de redação"],
+  ["Study Group", "Grupo de estudo"],
+  ["Senior year", "Último ano"],
+  ["History", "História"],
+  ["vs avg", "em relação à média"],
+  ["Loading", "Carregando"],
+  ["Error", "Erro"],
+  ["Submit", "Enviar"],
+  ["Cancel", "Cancelar"],
+  ["Save", "Salvar"],
+  ["Edit", "Editar"],
+  ["Delete", "Excluir"],
+  ["Open", "Abrir"],
+  ["Close", "Fechar"],
+  ["Report", "Relatório"],
+  ["Schedule", "Agenda"],
+  ["Subjects", "Disciplinas"],
+  ["Subject", "Disciplina"],
+  ["grade", "nota"],
+  ["term", "período"],
+];
+
+function applyStaticLabels() {
+  document.title = LABELS.pageTitle;
+  skipLink.textContent = LABELS.skipToMain;
+  document.getElementById("web-eyebrow").textContent = LABELS.headerEyebrow;
+  document.getElementById("web-title").textContent = LABELS.headerTitle;
+  mobileAction.textContent = LABELS.mobileAction;
+  document.getElementById("web-hero-title").textContent = LABELS.heroTitle;
+  document.getElementById("web-section-tasks-title").textContent = LABELS.sections.tasks;
+  document.getElementById("web-section-performance-title").textContent = LABELS.sections.performance;
+  document.getElementById("web-section-report-title").textContent = LABELS.sections.report;
+  document.getElementById("web-section-shortcuts-title").textContent = LABELS.sections.shortcuts;
+}
+
+function renderShortcuts() {
+  shortcutsLinks.innerHTML = LABELS.shortcuts
+    .map((shortcut) => `<a href="${escapeHtml(shortcut.href)}">${escapeHtml(shortcut.label)}</a>`)
+    .join("");
+}
+
+function localizeVisibleText(value) {
+  return PT_BR_VISIBLE_REPLACEMENTS.reduce((text, [source, target]) => {
+    const pattern = new RegExp(source, "gi");
+    return text.replace(pattern, target);
+  }, String(value));
+}
 
 function normalizeError(rawMessage) {
   if (rawMessage === "timeout") {
-    return "tempo limite excedido";
+    return LABELS.errors.timeout;
   }
   if (rawMessage === "unknown error") {
-    return "erro desconhecido";
+    return LABELS.errors.unknown;
   }
   if (rawMessage === "Failed to fetch" || rawMessage === "fetch failed") {
-    return "falha de conexão com a API";
+    return LABELS.errors.fetch;
   }
   if (String(rawMessage).startsWith("HTTP ")) {
-    return `erro ${rawMessage}`;
+    return LABELS.errors.http(rawMessage);
   }
   return rawMessage;
 }
@@ -69,10 +122,7 @@ function escapeHtml(value) {
 }
 
 function translateStatus(status) {
-  if (status === "Approved") return "Aprovado";
-  if (status === "Exam") return "Exame";
-  if (status === "In Progress") return "Em andamento";
-  return String(status);
+  return LABELS.statusMap[status] || String(status);
 }
 
 function withTimeout(endpoint) {
@@ -101,12 +151,12 @@ async function fetchEndpoint(endpoint, fallbackData) {
 
 function renderSummary(dashboard, subjects, schedule, report) {
   const cards = [
-    { label: "Média ponderada", value: dashboard.data.overview.weighted_gpa },
-    { label: "Progresso", value: `${dashboard.data.overview.progress_percent}%` },
-    { label: "Posição na turma", value: dashboard.data.overview.class_rank },
-    { label: "Média geral", value: report.data.summary.overall },
-    { label: "Eventos no mes", value: String(schedule.data.events.length) },
-    { label: "Matérias ativas", value: String(subjects.data.subjects.length) }
+    { label: LABELS.summaryCards.weightedAverage, value: dashboard.data.overview.weighted_gpa },
+    { label: LABELS.summaryCards.progress, value: `${dashboard.data.overview.progress_percent}%` },
+    { label: LABELS.summaryCards.classRank, value: dashboard.data.overview.class_rank },
+    { label: LABELS.summaryCards.overallAverage, value: report.data.summary.overall },
+    { label: LABELS.summaryCards.eventsInMonth, value: String(schedule.data.events.length) },
+    { label: LABELS.summaryCards.activeSubjects, value: String(subjects.data.subjects.length) },
   ];
 
   summaryCards.innerHTML = cards
@@ -114,7 +164,7 @@ function renderSummary(dashboard, subjects, schedule, report) {
       (card) => `
         <article class="summary-card">
           <h3>${escapeHtml(card.label)}</h3>
-          <div class="summary-value">${escapeHtml(card.value)}</div>
+          <div class="summary-value">${escapeHtml(localizeVisibleText(card.value))}</div>
         </article>
       `
     )
@@ -131,9 +181,10 @@ function renderList(container, items, mapFn, emptyMessage) {
 }
 
 function renderTasks(result) {
+  const detail = result.error || LABELS.errors.fetch;
   const warning =
     result.source === "fallback"
-      ? `<p class="warning-note">Modo contingência ativo no painel: ${escapeHtml(result.error || "falha na API")}</p>`
+      ? `<p class="warning-note">${escapeHtml(LABELS.warnings.panel(detail))}</p>`
       : "";
 
   renderList(
@@ -141,20 +192,21 @@ function renderTasks(result) {
     result.data.tasks,
     (task) => `
       <li class="item">
-        <p class="item-title">${escapeHtml(task.title)}</p>
-        <p class="item-subtitle">${escapeHtml(task.subtitle)}</p>
+        <p class="item-title">${escapeHtml(localizeVisibleText(task.title))}</p>
+        <p class="item-subtitle">${escapeHtml(localizeVisibleText(task.subtitle))}</p>
       </li>
     `,
-    "Sem tarefas registradas no momento."
+    LABELS.emptyStates.tasks
   );
 
   tasksContent.insertAdjacentHTML("beforeend", warning);
 }
 
 function renderPerformance(result) {
+  const detail = result.error || LABELS.errors.fetch;
   const warning =
     result.source === "fallback"
-      ? `<p class="warning-note">Modo contingência ativo no desempenho: ${escapeHtml(result.error || "falha na API")}</p>`
+      ? `<p class="warning-note">${escapeHtml(LABELS.warnings.performance(detail))}</p>`
       : "";
 
   renderList(
@@ -162,11 +214,11 @@ function renderPerformance(result) {
     result.data.performance,
     (item) => `
       <li class="item">
-        <p class="item-title">${escapeHtml(item.subject)} (${escapeHtml(item.gradeLabel)})</p>
-        <p class="item-subtitle">${escapeHtml(item.detail)} - ${escapeHtml(item.delta)}</p>
+        <p class="item-title">${escapeHtml(localizeVisibleText(item.subject))} (${escapeHtml(localizeVisibleText(item.gradeLabel))})</p>
+        <p class="item-subtitle">${escapeHtml(localizeVisibleText(item.detail))} - ${escapeHtml(localizeVisibleText(item.delta))}</p>
       </li>
     `,
-    "Sem lançamentos de desempenho recente."
+    LABELS.emptyStates.performance
   );
 
   performanceContent.insertAdjacentHTML("beforeend", warning);
@@ -179,7 +231,7 @@ function renderReport(result) {
       const statusClass = status === "Aprovado" ? "badge-ok" : "badge-warning";
       return `
         <tr>
-          <td>${escapeHtml(line.subject)}</td>
+          <td>${escapeHtml(localizeVisibleText(line.subject))}</td>
           <td class="right">${escapeHtml(line.terms[0])}</td>
           <td class="right">${escapeHtml(line.terms[1])}</td>
           <td class="right">${escapeHtml(line.terms[2])}</td>
@@ -193,30 +245,33 @@ function renderReport(result) {
 
   const emptyRow =
     rows ||
-    '<tr><td colspan="7" class="empty">Sem dados de boletim para exibir.</td></tr>';
+    `<tr><td colspan="7" class="empty">${escapeHtml(LABELS.emptyStates.report)}</td></tr>`;
 
+  const detail = result.error || LABELS.errors.fetch;
   const warning =
     result.source === "fallback"
-      ? `<p class="warning-note">Modo contingência ativo no boletim: ${escapeHtml(result.error || "falha na API")}</p>`
+      ? `<p class="warning-note">${escapeHtml(LABELS.warnings.report(detail))}</p>`
       : "";
 
   reportContent.innerHTML = `
     <p class="item-subtitle">
-      Estudante: <strong>${escapeHtml(result.data.student.name)}</strong> | Turma ${escapeHtml(
-    result.data.student.class_name
-  )} | Matrícula ${escapeHtml(result.data.student.student_id)}
+      ${escapeHtml(LABELS.studentLabels.student)}: <strong>${escapeHtml(result.data.student.name)}</strong> | ${escapeHtml(
+    LABELS.studentLabels.className
+  )} ${escapeHtml(
+    localizeVisibleText(result.data.student.class_name)
+  )} | ${escapeHtml(LABELS.studentLabels.enrollment)} ${escapeHtml(localizeVisibleText(result.data.student.student_id))}
     </p>
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th>Matéria</th>
-            <th class="right">T1</th>
-            <th class="right">T2</th>
-            <th class="right">T3</th>
-            <th class="right">T4</th>
-            <th class="right">Média</th>
-            <th class="right">Situação</th>
+            <th>${escapeHtml(LABELS.table.subject)}</th>
+            <th class="right">${escapeHtml(LABELS.table.term1)}</th>
+            <th class="right">${escapeHtml(LABELS.table.term2)}</th>
+            <th class="right">${escapeHtml(LABELS.table.term3)}</th>
+            <th class="right">${escapeHtml(LABELS.table.term4)}</th>
+            <th class="right">${escapeHtml(LABELS.table.average)}</th>
+            <th class="right">${escapeHtml(LABELS.table.status)}</th>
           </tr>
         </thead>
         <tbody>${emptyRow}</tbody>
@@ -229,17 +284,21 @@ function renderReport(result) {
 function setSourceState(results) {
   const fallbackCount = results.filter((result) => result.source === "fallback").length;
   if (fallbackCount === 0) {
-    sourceChip.textContent = "Fonte: API real";
+    sourceChip.textContent = LABELS.sourceUpdated;
     sourceChip.classList.remove("source-fallback");
     return;
   }
 
-  sourceChip.textContent = `Fonte: contingência local (${fallbackCount}/4)`;
+  sourceChip.textContent = LABELS.sourceFallback(fallbackCount);
   sourceChip.classList.add("source-fallback");
 }
 
 async function bootstrap() {
-  statusMessage.textContent = "Carregando consolidado web...";
+  applyStaticLabels();
+  renderShortcuts();
+  subtitle.textContent = LABELS.heroSubtitleLoading;
+  sourceChip.textContent = LABELS.sourceUpdated;
+  statusMessage.textContent = LABELS.loadingStatus;
 
   const [dashboard, subjects, schedule, report] = await Promise.all([
     fetchEndpoint(`${API_BASE}/dashboard`, FALLBACK.dashboard),
@@ -259,18 +318,17 @@ async function bootstrap() {
   ).length;
 
   if (fallbackCount === 0) {
-    subtitle.textContent = "Consolidado acadêmico carregado com dados reais da API.";
-    statusMessage.textContent = "Página web carregada com API real.";
+    subtitle.textContent = LABELS.sourceSubtitleLoaded;
+    statusMessage.textContent = LABELS.loadedStatus;
   } else {
-    subtitle.textContent =
-      "Parte dos dados está em contingência local. Verifique backend e endpoints mobile.";
-    statusMessage.textContent = `Página web carregada com contingência em ${fallbackCount} endpoint(s).`;
+    subtitle.textContent = LABELS.sourceSubtitleFallback;
+    statusMessage.textContent = LABELS.fallbackLoadedStatus(fallbackCount);
   }
 }
 
 bootstrap().catch((error) => {
   const message = error instanceof Error ? error.message : "erro inesperado";
-  statusMessage.textContent = `Falha ao carregar página web: ${message}`;
+  statusMessage.textContent = LABELS.loadingFailure(message);
   sourceChip.textContent = "Fonte: erro";
   sourceChip.classList.add("source-fallback");
 });

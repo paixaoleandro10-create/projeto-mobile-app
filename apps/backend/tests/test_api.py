@@ -145,11 +145,11 @@ def test_web_frontend_static_page(client):
     assert html_response.status_code == 200
     assert "text/html" in html_response.headers["content-type"]
     assert '<meta charset="UTF-8"' in html_response.text
-    assert "Resumo" in html_response.text
+    assert "Resumo Acadêmico" in html_response.text
     assert "conteúdo" in html_response.text
-    assert "Experiência" in html_response.text
-    assert "Fundação Web de Dados" in html_response.text
-    assert "celular" in html_response.text
+    assert "Experiência Web" in html_response.text
+    assert "Experiência Mobile" in html_response.text
+    assert "Navegação rápida" in html_response.text
 
     css_response = client.get("/web/static/styles.css")
     assert css_response.status_code == 200
@@ -160,6 +160,10 @@ def test_web_frontend_static_page(client):
     assert js_response.status_code == 200
     assert "Promise.all" in js_response.text
     assert "API_BASE = \"/api/v1/mobile\"" in js_response.text
+
+    labels_response = client.get("/web/static/labels.js")
+    assert labels_response.status_code == 200
+    assert "Fundação Web de Dados" in labels_response.text
 
 
 def test_mobile_web_route_supports_manual_fallback_toggle(client):
